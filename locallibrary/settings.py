@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a=6gl#e9o-ak(5s794)ehhy-7aef-j
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['rocky-harbor-21592.herokuapp.com','127.0.0.1']
 
 
 # Application definition
