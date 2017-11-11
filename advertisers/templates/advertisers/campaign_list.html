@@ -1,0 +1,54 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My Campaigns</h1>
+    <a class="btn btn-success" href="{% url 'campaign-create' %}" role="button">Create New Campaign</a>
+
+    {% if campaign_list %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Geo</th>
+                    <th>Browser</th>
+                    <th>Target Languages</th>
+                    <th>Status</th>
+                    <th>Impressions</th>
+                    <th>Clicks</th>
+                    <th>Spent</th>
+                    <th>CPC</th>
+                    <th>Teasers</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for campaign in campaign_list %}
+                    <tr>
+                        <td>{{ campaign.pk }}</td>
+                        <td>{{ campaign.name }}</td>
+                        <td>{{ campaign.display_geo }}</td>
+                        <td>{{ campaign.display_browser }}</td>
+                        <td>{{ campaign.display_target_language }}</td>
+                        <td>{{ campaign.status }}</td>
+                        <td>{{ campaign.impressions }}</td>
+                        <td>{{ campaign.clicks }}</td>
+                        <td>{{ campaign.spent }}</td>
+                        <td>{{ campaign.cpc }}</td>
+                        <td><a href="{% url 'teasers' campaign.pk %}">{{ campaign.display_num_teasers }}</a></td>
+                        <td>
+                            <a href="{% url 'campaign-activate' campaign.pk %}">Activate</a>
+                            <a href="{% url 'campaign-deactivate' campaign.pk %}">Deactivate</a>
+                            <a href="{% url 'campaign-update' campaign.pk %}">Edit</a>
+                            <a href="{% url 'campaign-delete' campaign.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>There are no campaigns.</p>
+    {% endif %}
+{% endblock %}

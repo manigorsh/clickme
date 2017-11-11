@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Titles of Campaign {{ campaign.pk }}</h1>
+    <a class="btn btn-success" href="{% url 'teaser-create' campaign.pk %}" role="button">Create New Title</a>
+
+    {% if teaser_list %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Preview</th>
+                    <th>Impressions</th>
+                    <th>Clicks</th>
+                    <th>Spent</th>
+                    <th>CTR</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for teaser in teaser_list %}
+                    <tr>
+                        <td>{{ teaser.pk }}</td>
+                        <td>{{ campaign.status }}</td>
+                        <td>
+                            <img src="https://dashboard.marketgid.com/tmp/img/1/imgg/56169/56169342_origin.jpg?t=1506920187" width="200"
+                                height="200" class="img-fluid" alt="Generic placeholder thumbnail">
+                             <h6>{{ campaign.title }}</h6>
+                        </td>
+                        <td>{{ campaign.impressions }}</td>
+                        <td>{{ campaign.clicks }}</td>
+                        <td>{{ campaign.spent }}</td>
+                        <td>{{ campaign.ctr }}</td>
+                        <td>
+                            <a href="{% url 'teaser-activate' campaign.pk teaser.pk %}">Activate</a>
+                            <a href="{% url 'teaser-deactivate' campaign.pk teaser.pk %}">Deactivate</a>
+                            <a href="{% url 'teaser-delete' campaign.pk teaser.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>There are no titles in campaign {{ campaign.pk }}.</p>
+    {% endif %}
+{% endblock %}

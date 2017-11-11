@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    {% block title %}<title>Local Library</title>{% endblock %}
+    {% block title %}<title>Walla Ads</title>{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     {% load static %}
@@ -16,7 +16,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Dashboard 1</a>
+        <a class="navbar-brand" href="#">Dashboard</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                 data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -25,14 +25,8 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'books' %}">All Books</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'authors' %}">All Authors</a>
+                    <a class="nav-link" href="{% url 'campaigns' %}">All Campaigns</a>
                 </li>
             </ul>
             <!--
@@ -49,18 +43,11 @@
         <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
             {% block sidebar %}
             <ul class="nav nav-pills flex-column">
-                {% if perms.catalog.can_mark_returned %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'all-borrowed' %}">All Borrowed Books</a>
-                </li>
-                {% endif %}
-            </ul>
-            <ul class="nav nav-pills flex-column">
                 {% if user.is_authenticated %}
 
                 <li class="nav-item">User: {{ user.get_username }}</li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'my-borrowed' %}">My Borrowed</a>
+                    <a class="nav-link" href="{% url 'campaigns' %}">Campaigns</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
@@ -74,71 +61,8 @@
             {% endblock %}
 
         </nav>
-
-        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-            <h1>Dashboard</h1>
-            <h2>Section title</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>ID, Status</th>
-                        <th>Preview</th>
-                        <th>CPC</th>
-                        <th>Impressions</th>
-                        <th>Clicks</th>
-                        <th>Spent</th>
-                        <th>CTR</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>56169342, Active</td>
-                            <td>
-                                <img src="https://dashboard.marketgid.com/tmp/img/1/imgg/56169/56169342_origin.jpg?t=1506920187" width="200"
-                                    height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-                                 <h6>"Кризис — это время зарабатывания денег"</h6>
-                                <span class="text-muted">Something else</span>
-                            </td>
-                            <td>2,0 ¢</td>
-                            <td>110 873</td>
-                            <td>968</td>
-                            <td>19,36</td>
-                            <td>0,873</td>
-                            <td><a href="#">Pause</a></td>
-                         </tr>
-                        <tr>
-                            <td>56169342, Active</td>
-                            <td>
-                                <img src="https://dashboard.marketgid.com/tmp/img/1/imgg/56169/56169342_origin.jpg?t=1506920187" width="200"
-                                    height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-                                 <h6>"Кризис — это время зарабатывания денег"</h6>
-                                <span class="text-muted">Something else</span>
-                            </td>
-                            <td>2,0 ¢</td>
-                            <td>110 873</td>
-                            <td>968</td>
-                            <td>19,36</td>
-                            <td>0,873</td>
-                            <td><a href="#">Pause</a></td>
-                         </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
-</div>
-
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-10 ">
-            {% block content %}{% endblock %}
+       <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+           {% block content %}{% endblock %}
             {% block pagination %}
             {% if is_paginated %}
             <div class="pagination">
@@ -156,10 +80,10 @@
             </div>
             {% endif %}
             {% endblock %}
-        </div>
+        </main>
     </div>
-
 </div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
