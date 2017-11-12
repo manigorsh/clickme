@@ -105,7 +105,7 @@ class TeasersView(LoginRequiredMixin, generic.ListView):
 
 class TeaserCreate(LoginRequiredMixin, CreateView):
     model = Teaser
-    fields = ['title', 'image']
+    fields = ['title', 'image', 'url']
     template_name = 'advertisers/teaser_create.html'
 
     def form_valid(self, form):
@@ -124,7 +124,10 @@ class TeaserCreate(LoginRequiredMixin, CreateView):
 
 class TeaserDelete(LoginRequiredMixin, DeleteView):
     model = Teaser
-    success_url = reverse_lazy('teasers')
+    pk_url_kwarg = 'teaser_id'
+
+    def get_success_url(self):
+        return reverse('teasers', kwargs={'campaign_id': self.kwargs['campaign_id']})
 
     def get_object(self, queryset=None):
         obj = super(TeaserDelete, self).get_object()
@@ -141,7 +144,7 @@ def teaser_activate(request, campaign_id, teaser_id):
     if teaser_inst.campaign.user == request.user and teaser_inst.status != status_moderation:
         teaser_inst.status = status
         teaser_inst.save()
-        return HttpResponseRedirect(reverse('teasers') )
+        return HttpResponseRedirect(reverse('teasers', kwargs={'campaign_id': teaser_inst.campaign.pk}))
     else:
         raise Http404
 
@@ -154,6 +157,6 @@ def teaser_deactivate(request, campaign_id, teaser_id):
     if teaser_inst.campaign.user == request.user and teaser_inst.status != status_moderation:
         teaser_inst.status = status
         teaser_inst.save()
-        return HttpResponseRedirect(reverse('teasers') )
+        return HttpResponseRedirect(reverse('teasers', kwargs={'campaign_id': teaser_inst.campaign.pk}))
     else:
         raise Http404

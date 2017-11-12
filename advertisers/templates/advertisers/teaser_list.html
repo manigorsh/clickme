@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Teasers of Campaign {{ campaign.name }}</h1>
-    <a class="btn btn-success" href="{% url 'teaser-create' campaign.pk %}" role="button">Create New Title</a>
+    <a class="btn btn-success" href="{% url 'teaser-create' campaign.pk %}" role="button">Create New Teaser</a>
 
     {% if teaser_list %}
         <div class="table-responsive">
@@ -10,8 +10,8 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Status</th>
                     <th>Preview</th>
+                    <th>Status</th>
                     <th>Impressions</th>
                     <th>Clicks</th>
                     <th>Spent</th>
@@ -23,12 +23,13 @@
                 {% for teaser in teaser_list %}
                     <tr>
                         <td>{{ teaser.pk }}</td>
-                        <td>{{ teaser.status }}</td>
                         <td>
                             <img src="{{ teaser.image.url }}" width="200"
                                 height="200" class="img-fluid" alt="Generic placeholder thumbnail">
                              <h6>{{ teaser.title }}</h6>
+                             <h6><a href="{{ teaser.url }}" target="_blank">{{ teaser.url }}</a></h6>
                         </td>
+                        <td>{{ teaser.status }}</td>
                         <td>{{ teaser.impressions }}</td>
                         <td>{{ teaser.clicks }}</td>
                         <td>{{ teaser.spent }}</td>
