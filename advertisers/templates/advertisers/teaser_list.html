@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Titles of Campaign {{ campaign.pk }}</h1>
+    <h1>Teasers of Campaign {{ campaign.name }}</h1>
     <a class="btn btn-success" href="{% url 'teaser-create' campaign.pk %}" role="button">Create New Title</a>
 
     {% if teaser_list %}
@@ -23,16 +23,16 @@
                 {% for teaser in teaser_list %}
                     <tr>
                         <td>{{ teaser.pk }}</td>
-                        <td>{{ campaign.status }}</td>
+                        <td>{{ teaser.status }}</td>
                         <td>
-                            <img src="https://dashboard.marketgid.com/tmp/img/1/imgg/56169/56169342_origin.jpg?t=1506920187" width="200"
+                            <img src="{{ teaser.image.url }}" width="200"
                                 height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-                             <h6>{{ campaign.title }}</h6>
+                             <h6>{{ teaser.title }}</h6>
                         </td>
-                        <td>{{ campaign.impressions }}</td>
-                        <td>{{ campaign.clicks }}</td>
-                        <td>{{ campaign.spent }}</td>
-                        <td>{{ campaign.ctr }}</td>
+                        <td>{{ teaser.impressions }}</td>
+                        <td>{{ teaser.clicks }}</td>
+                        <td>{{ teaser.spent }}</td>
+                        <td>{{ teaser.ctr }}</td>
                         <td>
                             <a href="{% url 'teaser-activate' campaign.pk teaser.pk %}">Activate</a>
                             <a href="{% url 'teaser-deactivate' campaign.pk teaser.pk %}">Deactivate</a>
@@ -44,6 +44,6 @@
             </table>
         </div>
     {% else %}
-        <p>There are no titles in campaign {{ campaign.pk }}.</p>
+        <p>There are no teasers in campaign {{ campaign.name }}.</p>
     {% endif %}
 {% endblock %}

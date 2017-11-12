@@ -6,7 +6,7 @@
     {% csrf_token %}
     <div class="form-group">
         <label for="{{ form.name.id_for_label }}">Campaign Name</label>
-        <input class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" type="text" />
+        <input class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" type="text" value="{{ form.name.value }}"/>
         {{ form.name.errors }}
     </div>
     <div class="form-group">
@@ -17,15 +17,6 @@
             {% endfor %}
         </select>
         {{ form.category.errors }}
-    </div>
-    <div class="form-group">
-        <label for="{{ form.language.id_for_label }}">Campaign Language</label>
-        <select id="{{ form.language.id_for_label }}" class="form-control" name="{{ form.language.html_name }}">
-            {% for value in form.language %}
-                {{ value }}
-            {% endfor %}
-        </select>
-        {{ form.language.errors }}
     </div>
     <div class="form-group">
         <label for="{{ form.geo.id_for_label }}">Campaign Geo</label>
@@ -65,12 +56,12 @@
     </div>
     <div class="form-group">
         <label for="{{ form.cpc.id_for_label }}">Cost Per Click</label>
-        <input class="form-control" id="{{ form.cpc.id_for_label }}" name="{{ form.cpc.html_name }}" type="text" />
+        <input class="form-control" id="{{ form.cpc.id_for_label }}" name="{{ form.cpc.html_name }}" type="text" value="{{ form.cpc.value }}" />
         {{ form.cpc.errors }}
     </div>
     <div class="form-group">
         <label for="{{ form.user_utm.id_for_label }}">Utm parameters</label>
-        <input class="form-control" id="{{ form.user_utm.id_for_label }}" name="{{ form.user_utm.html_name }}" type="text" />
+        <input class="form-control" id="{{ form.user_utm.id_for_label }}" name="{{ form.user_utm.html_name }}" type="text" value="{{ form.user_utm.value }}" />
         {{ form.user_utm.errors }}
     </div>
     <input type="submit" value="Submit" />

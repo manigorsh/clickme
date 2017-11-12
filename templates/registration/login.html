@@ -16,16 +16,16 @@
 {% endif %}
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-
-    <div>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+    <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="30" name="{{ form.username.html_name }}" type="text" />
+        {{ form.username.errors }}
     </div>
-    <div>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+    <div class="form-group">
+        <label for="{{ form.password.id_for_label }}">Password</label>
+        <input class="form-control" id="{{ form.password.id_for_label }}" maxlength="30" name="{{ form.password.html_name }}" type="password" />
+        {{ form.password.errors }}
     </div>
-
     <div>
         <input type="submit" value="login"/>
         <input type="hidden" name="next" value="{{ next }}"/>

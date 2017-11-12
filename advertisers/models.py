@@ -92,6 +92,7 @@ class Campaign(models.Model):
 
 class Teaser(models.Model):
     title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to = 'teasers/')
     campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True, blank=True)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, blank=False, null=False, default=3)
     impressions = models.BigIntegerField(default=0)

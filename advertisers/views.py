@@ -44,6 +44,7 @@ class CampaignUpdate(LoginRequiredMixin, UpdateView):
     model = Campaign
     fields = ['name', 'category', 'geo', 'browser', 'target_language', 'device', 'cpc', 'user_utm']
     success_url = reverse_lazy('campaigns')
+    template_name = 'advertisers/campaign_update.html'
 
     def get_object(self, queryset=None):
         obj = super(CampaignUpdate, self).get_object()
@@ -104,8 +105,17 @@ class TeasersView(LoginRequiredMixin, generic.ListView):
 
 class TeaserCreate(LoginRequiredMixin, CreateView):
     model = Teaser
-    fields = ['title']
-    success_url = reverse_lazy('teasers')
+    fields = ['title', 'image']
+    template_name = 'advertisers/teaser_create.html'
+
+    def form_valid(self, form):
+        campaign = get_object_or_404(Campaign, pk=self.kwargs['campaign_id'], user=self.request.user)
+        form.instance.campaign = campaign
+        return super(TeaserCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('teasers', kwargs={'campaign_id': self.kwargs['campaign_id']})
+
 '''
     def form_valid(self, form):
         form.instance.campaign.user = self.request.user
