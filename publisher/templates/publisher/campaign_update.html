@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.name.id_for_label }}">Campaign Name</label>
+        <input class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" type="text" value="{{ form.name.value }}"/>
+        {{ form.name.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Campaign Category</label>
+        <select id="{{ form.category.id_for_label }}" class="form-control" name="{{ form.category.html_name }}">
+            {% for value in form.category %}
+                {{ value }}
+            {% endfor %}
+        </select>
+        {{ form.category.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.geo.id_for_label }}">Campaign Geo</label>
+        <select multiple id="{{ form.geo.id_for_label }}" class="form-control" name="{{ form.geo.html_name }}">
+            {% for value in form.geo %}
+                {{ value }}
+            {% endfor %}
+        </select>
+        {{ form.geo.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.browser.id_for_label }}">Campaign Browser</label>
+        <select multiple id="{{ form.browser.id_for_label }}" class="form-control" name="{{ form.browser.html_name }}">
+            {% for value in form.browser %}
+                {{ value }}
+            {% endfor %}
+        </select>
+        {{ form.browser.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.target_language.id_for_label }}">Campaign Target Languages</label>
+        <select multiple id="{{ form.target_language.id_for_label }}" class="form-control" name="{{ form.target_language.html_name }}">
+            {% for value in form.target_language %}
+                {{ value }}
+            {% endfor %}
+        </select>
+        {{ form.target_language.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.device.id_for_label }}">Campaign Device</label>
+        <select multiple id="{{ form.device.id_for_label }}" class="form-control" name="{{ form.device.html_name }}">
+            {% for value in form.device %}
+                {{ value }}
+            {% endfor %}
+        </select>
+        {{ form.device.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.cpc.id_for_label }}">Cost Per Click</label>
+        <input class="form-control" id="{{ form.cpc.id_for_label }}" name="{{ form.cpc.html_name }}" type="text" value="{{ form.cpc.value }}" />
+        {{ form.cpc.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.user_utm.id_for_label }}">Utm parameters</label>
+        <input class="form-control" id="{{ form.user_utm.id_for_label }}" name="{{ form.user_utm.html_name }}" type="text" value="{{ form.user_utm.value }}" />
+        {{ form.user_utm.errors }}
+    </div>
+    <input type="submit" value="Submit" />
+
+</form>
+{% endblock %}

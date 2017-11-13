@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Widgets of Site {{ site.name }}</h1>
+    <a class="btn btn-success" href="{% url 'widget-create' site.pk %}" role="button">Create New Widget</a>
+
+    {% if widget_list %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Impressions</th>
+                    <th>Clicks</th>
+                    <th>Earned</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for widget in widget_list %}
+                    <tr>
+                        <td>{{ widget.pk }}</td>
+                        <td>{{ widget.title }}</td>
+                        <td style="font-size:10px;max-width:300px;">{{ widget.get_code }}</td>
+                        <td>{{ widget.impressions }}</td>
+                        <td>{{ widget.clicks }}</td>
+                        <td>{{ widget.earned }}</td>
+                        <td>
+                            <a href="{% url 'widget-delete' site.pk widget.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>There are no widgets in site {{ site.name }}.</p>
+    {% endif %}
+{% endblock %}

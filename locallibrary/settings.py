@@ -32,25 +32,28 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a=6gl#e9o-ak(5s794)ehhy-7aef-j
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 # Allow all host headers
-ALLOWED_HOSTS = ['rocky-harbor-21592.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['rocky-harbor-21592.herokuapp.com','127.0.0.1', '*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'storages',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'catalog.apps.CatalogConfig',
-    'advertisers.apps.AdvertisersConfig',
+    'advertiser.apps.AdvertisersConfig',
+    'publisher.apps.PublisherConfig',
+    'widgetgenerator.apps.WidgetgeneratorConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'locallibrary.urls'
 

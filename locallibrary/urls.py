@@ -19,12 +19,12 @@ from django.views.generic import RedirectView
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url='/advertisers/', permanent=True)),
+    url(r'^$', RedirectView.as_view(url='/advertiser/', permanent=True)),
     url(r'^admin/', admin.site.urls),
-    url(r'^advertisers/', include('advertisers.urls')),
+    url(r'^advertiser/', include('advertiser.urls')),
+    url(r'^publisher/', include('publisher.urls')),
+    url(r'^widget/', include('widgetgenerator.urls')),
 ]
-
-
 
 
 # Use static() to add url mapping to serve static files during development (only)

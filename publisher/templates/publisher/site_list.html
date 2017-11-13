@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My Sites</h1>
+    <a class="btn btn-success" href="{% url 'site-create' %}" role="button">Create New Site</a>
+
+    {% if site_list %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Status</th>
+                    <th>Widgets</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for site in site_list %}
+                    <tr>
+                        <td>{{ site.pk }}</td>
+                        <td>{{ site.name }}</td>
+                        <td>{{ site.domain }}</td>
+                        <td>{{ site.status }}</td>
+                        <td><a href="{% url 'widgets' site.pk %}">{{ site.display_num_widgets }}</a></td>
+                        <td>
+                            <a href="{% url 'site-delete' site.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>There are no sites.</p>
+    {% endif %}
+{% endblock %}
