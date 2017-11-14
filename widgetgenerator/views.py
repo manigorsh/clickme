@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from publisher.models import Widget
 from advertiser.models import Status, Teaser
@@ -49,7 +49,9 @@ def getTeasers(request, widget_id):
     return JsonResponse(result)
 
 def click(request, click_id):
-    pass
+
+    return HttpResponseRedirect("http://stackoverflow.com/")
+
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
