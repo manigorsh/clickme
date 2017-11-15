@@ -50,6 +50,7 @@
 
                 <li class="nav-item nav-link">User: <b>{{ user.get_username }}</b> </li>
                 <li class="nav-item nav-link">Epayments Wallet: <b>{{ user.profile.epayments_wallet }}</b> </li>
+                <li class="nav-item nav-link">Balance: <b>{{ user.profile.balance }}</b> </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'campaigns' %}">Campaigns</a>
                 </li>

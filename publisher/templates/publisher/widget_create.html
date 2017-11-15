@@ -18,24 +18,6 @@
         </select>
         {{ form.category.errors }}
     </div>
-    <div class="form-group">
-        <label for="{{ form.geo.id_for_label }}">Widget Geo</label>
-        <select multiple id="{{ form.geo.id_for_label }}" class="form-control" name="{{ form.geo.html_name }}">
-            {% for value in form.geo %}
-                {{ value }}
-            {% endfor %}
-        </select>
-        {{ form.geo.errors }}
-    </div>
-    <div class="form-group">
-        <label for="{{ form.target_language.id_for_label }}">Widget Target Languages</label>
-        <select multiple id="{{ form.target_language.id_for_label }}" class="form-control" name="{{ form.target_language.html_name }}">
-            {% for value in form.target_language %}
-                {{ value }}
-            {% endfor %}
-        </select>
-        {{ form.target_language.errors }}
-    </div>
     <input type="submit" value="Submit" />
 </form>
 {% endblock %}

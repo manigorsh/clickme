@@ -31,7 +31,7 @@ class CampaignDetailView(LoginRequiredMixin, generic.DetailView):
 
 class CampaignCreate(LoginRequiredMixin, CreateView):
     model = Campaign
-    fields = ['name', 'language', 'geo', 'browser', 'target_language', 'device', 'cpc', 'category', 'user_utm']
+    fields = ['name', 'language', 'geo', 'browser', 'language', 'device', 'cpc', 'category', 'user_utm']
     success_url = reverse_lazy('campaigns')
 
     def form_valid(self, form):
@@ -41,7 +41,7 @@ class CampaignCreate(LoginRequiredMixin, CreateView):
 
 class CampaignUpdate(LoginRequiredMixin, UpdateView):
     model = Campaign
-    fields = ['name', 'category', 'geo', 'browser', 'target_language', 'device', 'cpc', 'user_utm']
+    fields = ['name', 'category', 'geo', 'browser', 'device', 'cpc', 'user_utm']
     success_url = reverse_lazy('campaigns')
     template_name = 'advertiser/campaign_update.html'
 

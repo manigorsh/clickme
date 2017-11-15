@@ -33,7 +33,7 @@
                         <td>{{ teaser.impressions }}</td>
                         <td>{{ teaser.clicks }}</td>
                         <td>{{ teaser.spent }}</td>
-                        <td>{{ teaser.ctr }}</td>
+                        <td>{{ teaser.get_ctr }}</td>
                         <td>
                             <a href="{% url 'teaser-activate' campaign.pk teaser.pk %}">Activate</a>
                             <a href="{% url 'teaser-deactivate' campaign.pk teaser.pk %}">Deactivate</a>

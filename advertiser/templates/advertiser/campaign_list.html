@@ -11,9 +11,11 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Category</th>
                     <th>Geo</th>
+                    <th>Device</th>
                     <th>Browser</th>
-                    <th>Target Languages</th>
+                    <th>Language</th>
                     <th>Status</th>
                     <th>Impressions</th>
                     <th>Clicks</th>
@@ -28,9 +30,11 @@
                     <tr>
                         <td>{{ campaign.pk }}</td>
                         <td>{{ campaign.name }}</td>
+                        <td>{{ campaign.category }}</td>
                         <td>{{ campaign.display_geo }}</td>
+                        <td>{{ campaign.display_device }}</td>
                         <td>{{ campaign.display_browser }}</td>
-                        <td>{{ campaign.display_target_language }}</td>
+                        <td>{{ campaign.language }}</td>
                         <td>{{ campaign.status }}</td>
                         <td>{{ campaign.impressions }}</td>
                         <td>{{ campaign.clicks }}</td>

@@ -37,13 +37,13 @@
         {{ form.browser.errors }}
     </div>
     <div class="form-group">
-        <label for="{{ form.target_language.id_for_label }}">Campaign Target Languages</label>
-        <select multiple id="{{ form.target_language.id_for_label }}" class="form-control" name="{{ form.target_language.html_name }}">
-            {% for value in form.target_language %}
+        <label for="{{ form.language.id_for_label }}">Campaign  Languages</label>
+        <select multiple id="{{ form.language.id_for_label }}" class="form-control" name="{{ form.language.html_name }}">
+            {% for value in form.language %}
                 {{ value }}
             {% endfor %}
         </select>
-        {{ form.target_language.errors }}
+        {{ form.language.errors }}
     </div>
     <div class="form-group">
         <label for="{{ form.device.id_for_label }}">Campaign Device</label>

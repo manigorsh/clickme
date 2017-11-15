@@ -5,8 +5,7 @@ from advertiser.models import Teaser
 class ClientInfo(models.Model):
     ip = models.GenericIPAddressField(null=True, blank=True)
     user_agent = models.CharField(max_length=512, blank=True)
-    country = models.CharField(max_length=64, blank=True)
-    city = models.CharField(max_length=64, blank=True)
+    country_code = models.CharField(max_length=10, blank=True)
 
 class Impression(models.Model):
     created = models.DateTimeField(auto_now_add=True)

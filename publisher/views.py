@@ -57,7 +57,7 @@ class WidgetsView(LoginRequiredMixin, generic.ListView):
 
 class WidgetCreate(LoginRequiredMixin, CreateView):
     model = Widget
-    fields = ['title', 'category', 'geo', 'target_language']
+    fields = ['title', 'category']
     template_name = 'publisher/widget_create.html'
 
     def form_valid(self, form):
@@ -70,7 +70,7 @@ class WidgetCreate(LoginRequiredMixin, CreateView):
 
 class WidgetUpdate(LoginRequiredMixin, UpdateView):
     model = Widget
-    fields = ['title', 'category', 'geo', 'target_language', 'rows', 'columns']
+    fields = ['title', 'category']
     template_name = 'publisher/widget_update.html'
 
     def get_object(self, queryset=None):
