@@ -5,66 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<style>*,::after,::before{
-  box-sizing:border-box}
-  .walla-container{
-    width:100%;
-    padding-right:15px;
-    padding-left:15px;
-    margin-right:auto;
-    margin-left:auto}
-  @media (min-width:576px){
-    .walla-container{
-      max-width:540px}
-  }
-  @media (min-width:768px){
-    .walla-container{
-      max-width:720px}
-  }
-  @media (min-width:992px){
-    .walla-container{
-      max-width:960px}
-  }
-  @media (min-width:1200px){
-    .walla-container{
-      max-width:1140px}
-  }
-  .walla-row{
-    display:-ms-flexbox;
-    display:flex;
-    -ms-flex-wrap:wrap;
-    flex-wrap:wrap;
-    margin-right:-15px;
-    margin-left:-15px}
-  .walla-col-lg-6,.walla-col-md-12,.walla-col-xl-4{
-    position:relative;
-    width:100%;
-    min-height:1px;
-    padding-right:15px;
-    padding-left:15px}
-  @media (min-width:768px){
-    .walla-col-md-12{
-      -ms-flex:0 0 100%;
-      flex:0 0 100%;
-      max-width:100%}
-  }
-  @media (min-width:992px){
-    .walla-col-lg-6{
-      -ms-flex:0 0 50%;
-      flex:0 0 50%;
-      max-width:50%}
-  }
-  @media (min-width:1200px){
-    .walla-col-xl-4{
-      -ms-flex:0 0 33.333333%;
-      flex:0 0 33.333333%;
-      max-width:33.333333%}
-  }
-</style>
-<div id="walla_widget_1">
-</div>
-
+<div id="walla_widget_1"></div>
+<script type='text/javascript'>(function(){var l=document.createElement('link');l.rel='stylesheet';l.type='text/css';l.href='http://127.0.0.1:8000/widget/1/css/';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(l,s);var j=document.createElement('script');j.type='text/javascript';j.async=true;j.src='http://127.0.0.1:8000/widget/1/js/';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(j,s);})();</script>
+<!--
 <script type="text/javascript">
+
     function getBrowser() {
         var browser='';
         if(!!window.chrome && !!window.chrome.webstore) {
@@ -88,7 +33,7 @@
         return browser;
     }
 
-    var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+    var XHR = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
 
     function getTeasers(country_code) {
         var xhr = new XHR();
@@ -96,19 +41,19 @@
 
         xhr.onload = function() {
             json=JSON.parse(this.responseText);
-            teaserContainer=document.getElementById("walla_widget_1");
-            var e=document.createElement("div");
-            e.className="walla-container";
-            var t=document.createElement("div");
-            t.className="walla-row";
+            teaserContainer=document.getElementById('walla_widget_1');
+            var e=document.createElement('div');
+            e.className='walla-container';
+            var t=document.createElement('div');
+            t.className='walla-row';
             for(var a=0;a<json.teasers.length;a++){
                 var n=json.teasers[a];
-                var l=document.createElement("div");
-                l.className="walla-col-md-12 walla-col-lg-6 walla-col-xl-4"
-                l.innerHTML='<a target="_blank" href="'+n.link+'"><img alt=\''+n.title+'\' style="width: 100%; display: block;" src="'+n.image+'"><p style="font-size:18px;line-height:1.25;">'+n.title+'</p></a>';
+                var l=document.createElement('div');
+                l.className='walla-col-md-12 walla-col-lg-6 walla-col-xl-4'
+                l.innerHTML='<a target=\'_blank\' href=\''+n.link+'\'><img style=\'width:100%;max-height:193px\' alt=\''+n.title+'\' style=\'width: 100%; display: block;\' src=\''+n.image+'\'><p style=\'font-size:18px;line-height:1.25;\'>'+n.title+'</p></a>';
                 t.appendChild(l);
             }
-            var r=document.createElement("p");
+            var r=document.createElement('p');
             r.innerHTML=json.title;
             e.appendChild(r);
             e.appendChild(t);
@@ -116,7 +61,7 @@
 
         }
         xhr.onerror = function() {
-          console.log("Error loading teasers "+this.status);
+          console.log('Error loading teasers '+this.status);
         }
         xhr.send();
     }
@@ -134,5 +79,6 @@
     }
     geo.send();
 </script>
+-->
 </body>
 </html>

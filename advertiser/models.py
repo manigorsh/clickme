@@ -78,10 +78,15 @@ class Campaign(models.Model):
     def display_num_teasers(self):
         return Teaser.objects.filter(campaign=self).count()
 
+def update_filename(instance, filename):
+    import os, datetime, base64
+    path = 'teasers/'
+    format = base64.b64encode(bytes(str(instance.campaign.user.id) + ',' + str(instance.campaign.pk) + ',' + str(datetime.datetime.now()), encoding='utf-8')).decode("utf-8")
+    return os.path.join(path, format)
 
 class Teaser(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to = 'teasers/') #414x232
+    image = models.ImageField(upload_to = update_filename)
     url = models.URLField(default='');
     campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, null=True, blank=True)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, blank=False, null=False, default=3)
@@ -94,6 +99,6 @@ class Teaser(models.Model):
 
     def get_ctr(self):
         if self.impressions != 0:
-            return self.clicks / self.impressions
+            return str((self.clicks / self.impressions))[:4]
         else:
             return 'N/A'

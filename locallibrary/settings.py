@@ -35,6 +35,9 @@ DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 ALLOWED_HOSTS = ['rocky-harbor-21592.herokuapp.com','127.0.0.1', '*']
 
 
+WIDGET_GENERATOR_DOMAIN = 'http://127.0.0.1:8000'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'advertiser.apps.AdvertisersConfig',
     'publisher.apps.PublisherConfig',
-    'widgetgenerator.apps.WidgetgeneratorConfig',
+    'widgetgenerator.apps.WidgetgeneratorConfig'
 ]
 
 MIDDLEWARE = [
