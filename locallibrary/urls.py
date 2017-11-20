@@ -19,11 +19,13 @@ from django.views.generic import RedirectView
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url='/advertiser/', permanent=True)),
+    #url(r'^$', RedirectView.as_view(url='/advertiser/', permanent=True)),
+    url(r'^$', RedirectView.as_view(url='/landings/', permanent=True)),
     url(r'^admin/', admin.site.urls),
     url(r'^advertiser/', include('advertiser.urls')),
     url(r'^publisher/', include('publisher.urls')),
     url(r'^widget/', include('widgetgenerator.urls')),
+    url(r'^landings/', include('landings.urls')),
 ]
 
 

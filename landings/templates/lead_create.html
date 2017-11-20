@@ -1,0 +1,17 @@
+{% block content %}
+<h1>Start Sell Your Traffic</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        <input class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" type="text" />
+        {{ form.email.errors }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.domain.id_for_label }}">Domain</label>
+        <input id="{{ form.domain.id_for_label }}" class="form-control" name="{{ form.domain.html_name }}" />
+        {{ form.domain.errors }}
+    </div>
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

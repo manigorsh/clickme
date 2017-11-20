@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'advertiser.apps.AdvertisersConfig',
     'publisher.apps.PublisherConfig',
-    'widgetgenerator.apps.WidgetgeneratorConfig'
+    'widgetgenerator.apps.WidgetgeneratorConfig',
+    'landings.apps.LandingsConfig'add
 ]
 
 MIDDLEWARE = [
