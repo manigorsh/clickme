@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'advertiser.apps.AdvertisersConfig',
     'publisher.apps.PublisherConfig',
     'widgetgenerator.apps.WidgetgeneratorConfig',
-    'landings.apps.LandingsConfig'add
+    'landings.apps.LandingsConfig'
 ]
 
 MIDDLEWARE = [
