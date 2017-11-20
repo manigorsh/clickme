@@ -34,9 +34,7 @@ DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 # Allow all host headers
 ALLOWED_HOSTS = ['rocky-harbor-21592.herokuapp.com','127.0.0.1', '*']
 
-
-WIDGET_GENERATOR_DOMAIN = 'http://127.0.0.1:8000'
-
+WIDGET_GENERATOR_DOMAIN = os.environ.get('WIDGET_GENERATOR_DOMAIN', 'http://127.0.0.1:8000')
 
 # Application definition
 
@@ -148,9 +146,9 @@ LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
